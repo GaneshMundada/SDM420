@@ -1,0 +1,24 @@
+/* 
+*/
+SECTION 1
+1.  select * from (select *,rank() over(order by empno) id from emp)e where id%2=0;
+
+2.  select * from (select *,dense_rank() over(order by sal desc) id from emp)e where id =3;
+
+3.  select ename,job,sal SALARY from emp where sal>(select sal from emp where ename='smith') order by sal desc;
+
+4.  select * from emp where date_format(hiredate,'%Y')=1981;
+
+5.  select * from emp where job='manager' and deptno in (select deptno from dept where dname='sales');
+
+6.  select ename NAME,empno 'EMPLOYEE NUMBER' ,job DESIGNATION, sal SALARY FROM emp where sal between 1000 and 2000;
+
+7.  select ename 'Employee NAME', job JOB, dname 'department name' from emp e inner join dept d using(deptno) where job not in('manager') and deptno in(30,40);
+
+8.  select count(*) from emp where ename like 'a%' or ename like 'm%';
+
+9.  select ename NAME, rpad(lpad(phone,6,'*'),10,'*')Phone from emp where phone is not null;
+
+10. select * from emp where empno not in(select distinct empid from emp_cards);
+
+
